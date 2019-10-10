@@ -68,6 +68,7 @@
 						<li><a href="ch04/content" target="iframe">요청 헤더값과 쿠키값 설정 및 읽기</a></li>
 						<li><a href="ch05/content" target="iframe">컨트롤러에서 뷰로 데이터 전달</a></li>
 						<li><a href="ch06/content" target="iframe">매개변수 타입과 리턴 타입</a></li>
+						<li><a href="ch08/content" target="iframe">파일 업로드</a></li>
 					</ul>								
 				</div>
 				<div id="center">
