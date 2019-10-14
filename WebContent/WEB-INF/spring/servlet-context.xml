@@ -8,18 +8,44 @@
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
 	<!-- Enables the Spring MVC @Controller programming model -->
-	<mvc:annotation-driven />
+	<mvc:annotation-driven /> 
 
 	<!-- Handles HTTP GET requests for /resources/** by efficiently serving up static resources in the ${webappRoot}/resources directory -->
 	<mvc:resources mapping="/resources/**" location="/resources/" />
-
+	<!-- 경로에 resources 있으면 Controller 거치지 않고 바로 resources 폴더 매핑 -->
 	<!-- Resolves views selected for rendering by @Controllers to .jsp resources in the /WEB-INF/views directory -->
 	<bean class="org.springframework.web.servlet.view.InternalResourceViewResolver">
-		<property name="prefix" value="/WEB-INF/views/" />
+		<property name="prefix" value="/WEB-INF/views/" /> <!-- 매개변수값이 문자열이나 숫자인경우 value -->
 		<property name="suffix" value=".jsp" />
 	</bean>
 	
-	<context:component-scan base-package="com.mycompany.web" />
+	<context:component-scan base-package="com.mycompany.web" /> <!-- 패키지범위 안에 있는 @찾아서 spring이 객체 관리하겠다 -->
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	<!--<bean id="ch09Service" class="com.mycompany.web.service.Ch09Service">
+		<constructor-arg name="arg1" value="홍길동"></constructor-arg>
+		<constructor-arg name="arg2" value="10"></constructor-arg>
+	</bean> -->
+	
+	<!-- DI(의존성 주입) -->
+	<!--  <bean id="ch09Controller" class="com.mycompany.web.controller.Ch09Controller">
+		<property name="ch09Service" ref="ch09Service"></property>
+		<property name="ch09Service2" ref="ch09Service2"></property>
+		<property name="ch09Service3" ref="ch09Service3"></property>
+	</bean> -->
+	<!-- <bean id="ch09Service" class="com.mycompany.web.service.Ch09Service"> -->
+	<!-- service의 property는 setter/name은 set을 빼고 첫자를 소문자로 한 이름/Dao객체가 Service에 주입 -->
+		<!-- <property name="ch09Dao" ref="ch09Dao"></property>--> <!-- ref가 매개값 = setCh09Dao(Ch09Dao ch09Dao) -->
+	<!-- </bean> -->
+	<!--  <bean id="ch09Dao" class="com.mycompany.web.dao.Ch09Dao"/> -->
+	
+	<!--  <bean id="ch09Service2" class="com.mycompany.web.service.Ch09Service2">
+		<property name="ch09Dao2" ref="ch09Dao2"></property>
+	</bean> -->
+	<!--  <bean id="ch09Dao2" class="com.mycompany.web.dao.Ch09Dao2"/> -->
+	
+	<!-- <bean id="ch09Service3" class="com.mycompany.web.service.Ch09Service3">
+		<property name="ch09Dao3" ref="ch09Dao3"></property>
+	</bean>  -->
+	<!-- <bean id="ch09Dao3" class="com.mycompany.web.dao.Ch09Dao3"/>-->
 </beans>

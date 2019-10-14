@@ -2,6 +2,14 @@
 <web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd" id="WebApp_ID" version="4.0">
   <display-name>SpringProgramming2</display-name>
   
+  <listener>
+  	<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+  </listener>
+  <context-param>
+  	<param-name>contextConfigLocation</param-name>
+  	<param-value>/WEB-INF/spring/root-context.xml</param-value>
+  </context-param>
+  
   <filter>
   	<filter-name>CharacterEncodingFilter</filter-name>
   	<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
@@ -16,10 +24,11 @@
   </filter-mapping>
   
   <servlet>
-  	<servlet-name>dispatcher</servlet-name>
+  	<servlet-name>dispatcher</servlet-name> <!--DispatcherServlet 객체가 생성되면서 WebApplicationContext를 생성--> 
   	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
   	<init-param>
-  		<param-name>contextConfigLocation</param-name>
+  		<param-name>contextConfigLocation</param-name> 
+  		<!--WebApplicationContext가 관리해야될 내용을 servlet-context.xml에 작성 -->
 		<param-value>/WEB-INF/spring/servlet-context.xml</param-value>
   	</init-param>
   	<load-on-startup>1</load-on-startup>
@@ -28,4 +37,19 @@
   	<servlet-name>dispatcher</servlet-name>
   	<url-pattern>/</url-pattern>
   </servlet-mapping>
+  
+    <servlet>
+  	<servlet-name>dispatcher2</servlet-name>  
+  	<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+  	<init-param>
+  		<param-name>contextConfigLocation</param-name> 
+		<param-value>/WEB-INF/spring/servlet-context2.xml</param-value>
+  	</init-param>
+  	<load-on-startup>1</load-on-startup>
+  </servlet>
+  <servlet-mapping>
+  	<servlet-name>dispatcher2</servlet-name>
+  	<url-pattern>/dispatcher2</url-pattern>
+  </servlet-mapping>
+  
 </web-app>

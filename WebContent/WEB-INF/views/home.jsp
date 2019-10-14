@@ -69,6 +69,7 @@
 						<li><a href="ch05/content" target="iframe">컨트롤러에서 뷰로 데이터 전달</a></li>
 						<li><a href="ch06/content" target="iframe">매개변수 타입과 리턴 타입</a></li>
 						<li><a href="ch08/content" target="iframe">파일 업로드</a></li>
+						<li><a href="ch09/content" target="iframe">의존성 주입(DI)</a></li>
 					</ul>								
 				</div>
 				<div id="center">
