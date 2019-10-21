@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="board">
+	<select id="selectList" parameterType="map"
+		resultType="com.mycompany.web.dto.Ch10Board">
+		select rn, bno, btitle, bwriter, bhitcount, bdate
+		from(
+			select rownum as rn, bno, btitle, bwriter, bhitcount, bdate
+			from(select bno, btitle, bwriter, bhitcount, bdate from board order by bno desc)
+			where rownum &lt;= #{endRowNo}
+		)
+		where rn &gt;= #{startRowNo}
+	</select>
+
+	<select id="selectTotalRowNum" resultType="int">
+		select count(*) from
+		board
+	</select>
+
+	<insert id="insert" parameterType="com.mycompany.web.dto.Ch10Board">
+		<selectKey keyProperty="bno" resultType="int" order="BEFORE"> 
+		<!-- 컨트롤러에서 bno를 사용하기위해 -->
+			select BOARD_BNO_SEQ.nextval from dual
+		</selectKey>
+		insert into board(bno, btitle, bcontent, bwriter, bhitcount, bdate)
+		values(#{bno}, #{btitle}, #{bcontent}, #{bwriter}, 0, sysdate)
+	</insert>
+</mapper>

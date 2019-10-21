@@ -70,6 +70,7 @@
 						<li><a href="ch06/content" target="iframe">매개변수 타입과 리턴 타입</a></li>
 						<li><a href="ch08/content" target="iframe">파일 업로드</a></li>
 						<li><a href="ch09/content" target="iframe">의존성 주입(DI)</a></li>
+						<li><a href="ch10/content" target="iframe">데이터베이스 연동</a></li>
 					</ul>								
 				</div>
 				<div id="center">
