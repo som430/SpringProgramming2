@@ -12,6 +12,10 @@
 		<result column="mid" property="mid"/> <!-- column값을 midSet의 매개값으로 주겠다 -->
 		<result column="mname" property="mname"/>
 		<result column="mpassword" property="mpassword"/>
-	</resultMap>
+	</resultMap> 
 	
+	<insert id="insert" parameterType="com.mycompany.web.dto.Ch10Member">
+		insert into member(mid, mname, mpassword)
+		values(#{mid}, #{mname}, #{mpassword})
+	</insert>
 </mapper>

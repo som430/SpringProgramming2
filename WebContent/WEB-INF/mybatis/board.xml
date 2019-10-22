@@ -11,18 +11,34 @@
 		)
 		where rn &gt;= #{startRowNo}
 	</select>
+	
+	<select id="selectBoard" parameterType="int" resultType="com.mycompany.web.dto.Ch10Board">
+		select bno, btitle, bcontent, bwriter, bhitcount, bdate from board where bno = #{bno} 
+	</select>
 
 	<select id="selectTotalRowNum" resultType="int">
-		select count(*) from
-		board
+		select count(*) from board
 	</select>
 
 	<insert id="insert" parameterType="com.mycompany.web.dto.Ch10Board">
-		<selectKey keyProperty="bno" resultType="int" order="BEFORE"> 
+		 <selectKey keyProperty="bno" resultType="int" order="BEFORE"> 
 		<!-- 컨트롤러에서 bno를 사용하기위해 -->
 			select BOARD_BNO_SEQ.nextval from dual
-		</selectKey>
+		</selectKey> 
 		insert into board(bno, btitle, bcontent, bwriter, bhitcount, bdate)
 		values(#{bno}, #{btitle}, #{bcontent}, #{bwriter}, 0, sysdate)
 	</insert>
+	
+	<update id="updateHitcount" parameterType="int">
+		update board set bhitcount=bhitcount+1 where bno = #{bno} 
+	</update>
+	
+	<update id="updateBoard" parameterType="com.mycompany.web.dto.Ch10Board">
+		update board set btitle=#{btitle}, bcontent=#{bcontent} where bno = #{bno} 
+	</update>
+	
+	<delete id="deleteBoard" parameterType="int">
+		delete from board where bno = #{bno}
+	</delete>
+	
 </mapper>

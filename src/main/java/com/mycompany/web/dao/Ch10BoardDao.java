@@ -33,4 +33,25 @@ public class Ch10BoardDao {
 		int rows = sqlSessionTemplate.insert("board.insert", board); //return값 : 반영된 행의 수 
 		return rows;
 	}
+
+	public Ch10Board selectBoard(int bno) {
+		Ch10Board board = sqlSessionTemplate.selectOne("board.selectBoard", bno);
+		return board;
+	}
+
+	public int updateHitcount(int bno) {
+		int rows = sqlSessionTemplate.update("board.updateHitcount", bno);
+		return rows;
+	}
+
+	public int updateBoard(Ch10Board board) {
+		int rows = sqlSessionTemplate.update("board.updateBoard", board);
+		return rows;
+		
+	}
+
+	public int deleteBoard(int bno) {
+		int rows = sqlSessionTemplate.delete("board.deleteBoard", bno);
+		return rows;
+	}
 }
