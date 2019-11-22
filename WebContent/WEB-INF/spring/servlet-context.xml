@@ -3,7 +3,9 @@
 	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
 	xmlns:mvc="http://www.springframework.org/schema/mvc"
 	xmlns:context="http://www.springframework.org/schema/context"
-	xsi:schemaLocation="http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
+	xmlns:websocket="http://www.springframework.org/schema/websocket"
+	xsi:schemaLocation="http://www.springframework.org/schema/websocket http://www.springframework.org/schema/websocket/spring-websocket-4.3.xsd
+		http://www.springframework.org/schema/mvc http://www.springframework.org/schema/mvc/spring-mvc.xsd
 		http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd
 		http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd">
 
@@ -22,6 +24,11 @@
 	<context:component-scan base-package="com.mycompany.web" /> <!-- 패키지범위 안에 있는 @찾아서 spring이 객체 관리하겠다 -->
 	
 	<bean id="multipartResolver" class="org.springframework.web.multipart.commons.CommonsMultipartResolver"/>
+	
+	<websocket:handlers>
+		<websocket:mapping handler="webSocketTemperature" path="/websocket/temperature"/>
+	</websocket:handlers>
+	
 	<!--<bean id="ch09Service" class="com.mycompany.web.service.Ch09Service">
 		<constructor-arg name="arg1" value="홍길동"></constructor-arg>
 		<constructor-arg name="arg2" value="10"></constructor-arg>
